@@ -1,0 +1,54 @@
+# Função para realizar o depósito
+def deposito(saldo, valor):
+    if valor > 0:
+        saldo += valor
+        print(f"Depósito de R${valor:.2f} realizado com sucesso.")
+    else:
+        print("O valor do depósito deve ser positivo.")
+    return saldo
+
+# Função para realizar o saque
+def saque(saldo, valor):
+    if valor > 0:
+        if valor <= saldo:
+            saldo -= valor
+            print(f"Saque de R${valor:.2f} realizado com sucesso.")
+        else:
+            print("Saldo insuficiente para o saque.")
+    else:
+        print("O valor do saque deve ser positivo.")
+    return saldo
+
+# Função para exibir o extrato
+def extrato(saldo):
+    print(f"Seu saldo atual é: R${saldo:.2f}")
+
+# Função principal que gerencia o sistema bancário
+def sistema_bancario():
+    saldo = 0  # Saldo inicial
+    
+    while True:
+        print("\nMenu:")
+        print("1 - Depósito")
+        print("2 - Saque")
+        print("3 - Extrato")
+        print("4 - Sair")
+        
+        opcao = input("Escolha uma opção: ")
+        
+        if opcao == "1":
+            valor = float(input("Digite o valor do depósito: R$"))
+            saldo = deposito(saldo, valor)
+        elif opcao == "2":
+            valor = float(input("Digite o valor do saque: R$"))
+            saldo = saque(saldo, valor)
+        elif opcao == "3":
+            extrato(saldo)
+        elif opcao == "4":
+            print("Saindo do sistema...")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+# Executa o sistema bancário
+sistema_bancario()
